@@ -9,5 +9,15 @@ describe('тестирование сайта https://login.qa.studio ' , () => 
         cy.wait(1000);
         cy.get('#messageHeader').should('have.text', 'Авторизация прошла успешно')
     }) 
-})
 
+    it('Востановление пароля' , () => {
+
+        cy.visit('https://login.qa.studio/')
+
+        cy.get('#forgotEmailButton').click()
+        cy.get('#forgotForm').type('german@dolnikov.ru')
+        cy.get('#restoreEmailButton').click()
+        cy.wait(1000);
+        cy.get('#messageHeader').should('have.text', 'Успешно отправили пароль на e-mail')
+    })
+})
